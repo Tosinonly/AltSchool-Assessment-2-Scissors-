@@ -57,10 +57,17 @@ ul { list-style: none; }
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
 }
 
+.logo { 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    gap: 10px; 
+    margin-bottom: 8px;
+}
+
 .logo-text { font-size: 26px; font-weight: 700; color: var(--primary); }
-.cross { font-size: 14px; margin: 0 12px; color: #A0AEC0; }
-.scissors-icon { font-size: 22px; }
-.logo-banner p { font-size: 13px; color: var(--text-muted); margin-top: 8px; line-height: 1.4; }
+.cross { font-size: 14px; color: #A0AEC0; }
+.logo-banner p { font-size: 13px; color: var(--text-muted); line-height: 1.4; }
 
 .stats-card {
     background: #ffffff;
@@ -108,11 +115,9 @@ ul { list-style: none; }
 
 .icon-box {
     background: #EBF4FF;
-    color: var(--primary);
     width: 40px; height: 40px;
     display: flex; justify-content: center; align-items: center;
     border-radius: 8px; margin-bottom: 16px;
-    font-weight: 600; font-size: 16px;
 }
 
 .feature-card h3 { font-size: 16px; margin-bottom: 8px; font-weight: 600; }
@@ -305,7 +310,7 @@ footer { padding: 80px 20px 30px; background: #ffffff; }
 }
 .footer-legal a { margin-left: 24px; }
 
-/* --- RESPONSIVE DESIGN --- */
+/* --- RESPONSIVE DESIGN (For Phones) --- */
 @media (max-width: 900px) {
     .stats-card { flex-direction: column; gap: 24px; text-align: center; padding: 24px; }
     .stats-grid { flex-wrap: wrap; justify-content: center; gap: 24px; }
