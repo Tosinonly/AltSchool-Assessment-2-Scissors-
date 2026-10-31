@@ -8,8 +8,8 @@
 }
 
 :root {
-    --primary: #0066FF;
-    --dark: #0A2540;
+    --primary: #005AE2;
+    --dark: #0B2545;
     --text-main: #1A1A1A;
     --text-muted: #555555;
     --bg-light: #F9FAFC;
@@ -61,12 +61,11 @@ ul { list-style: none; }
     display: flex; 
     align-items: center; 
     justify-content: center; 
-    gap: 10px; 
-    margin-bottom: 8px;
+    gap: 8px; 
+    margin-bottom: 12px;
 }
 
-.logo-text { font-size: 26px; font-weight: 700; color: var(--primary); }
-.cross { font-size: 14px; color: #A0AEC0; }
+.logo-text { font-size: 24px; font-weight: 700; color: var(--primary); letter-spacing: 1px;}
 .logo-banner p { font-size: 13px; color: var(--text-muted); line-height: 1.4; }
 
 .stats-card {
@@ -292,9 +291,7 @@ ul { list-style: none; }
 /* --- FOOTER --- */
 footer { padding: 80px 20px 30px; background: #ffffff; }
 .footer-top { display: flex; justify-content: space-between; border-bottom: 1px solid var(--border); padding-bottom: 40px; }
-.footer-logo { font-size: 26px; font-weight: 700; color: var(--primary); margin-bottom: 20px; }
-.socials a { margin-right: 16px; font-size: 18px; color: var(--text-main); opacity: 0.7; transition: opacity 0.2s; }
-.socials a:hover { opacity: 1; }
+.footer-logo { font-size: 24px; font-weight: 700; color: var(--primary); letter-spacing: 1px; margin-bottom: 10px; }
 
 .footer-links { display: flex; gap: 60px; }
 .footer-links h4 { font-size: 14px; margin-bottom: 20px; font-weight: 600; color: var(--text-main); }
