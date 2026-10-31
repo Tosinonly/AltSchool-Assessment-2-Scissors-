@@ -88,10 +88,12 @@ ul { list-style: none; }
 .stat-item h3 { font-size: 22px; font-weight: 700; margin-bottom: 4px; }
 .stat-item p { font-size: 13px; color: var(--text-muted); line-height: 1.3; }
 
-/* --- WHY CHOOSE SECTION --- */
+/* --- WHY CHOOSE SECTION (Side-by-Side Layout) --- */
 .why-choose {
     padding: 80px 20px;
     display: flex;
+    flex-direction: row; /* Forces side by side */
+    align-items: flex-start;
     gap: 60px;
 }
 
@@ -123,16 +125,17 @@ ul { list-style: none; }
 .feature-card h3 { font-size: 16px; margin-bottom: 8px; font-weight: 600; }
 .feature-card p { font-size: 14px; color: var(--text-muted); line-height: 1.5; }
 
-/* --- PRICING SECTION --- */
+/* --- PRICING SECTION (Row Layout) --- */
 .pricing { padding: 60px 20px 80px; text-align: center; }
 .pricing-header h2 { font-size: 32px; margin-bottom: 12px; font-weight: 700; }
 .pricing-header p { color: var(--text-muted); margin-bottom: 50px; font-size: 15px; }
 
 .pricing-cards {
     display: flex;
+    flex-direction: row; /* Forces the 3 cards in a row */
     justify-content: center;
     align-items: center;
-    gap: 20px;
+    gap: 0; /* Overlap them slightly like the design */
     margin-bottom: 50px;
 }
 
@@ -151,7 +154,7 @@ ul { list-style: none; }
 .card ul li { font-size: 14px; margin-bottom: 16px; display: flex; align-items: center; gap: 10px; color: var(--text-muted);}
 .check { color: var(--primary); font-weight: bold; font-size: 16px; }
 
-/* Pro Card (Dark) */
+/* Pro Card (Dark & Overlapping) */
 .pro {
     background: var(--dark);
     color: #ffffff;
@@ -207,13 +210,24 @@ ul { list-style: none; }
 }
 .btn-outline:hover { background: #EBF4FF; }
 
-/* --- SIGN UP FORM SECTION --- */
+/* --- SIGN UP FORM SECTION (Slanted Background) --- */
 .signup-section {
     background: var(--dark);
-    padding: 80px 20px;
+    padding: 100px 20px;
     display: flex;
     justify-content: center;
-    background-image: radial-gradient(circle at 0% 0%, #153A5E 0%, transparent 50%), radial-gradient(circle at 100% 100%, #153A5E 0%, transparent 50%);
+    position: relative;
+    overflow: hidden;
+}
+
+/* This creates the slanted wavy shape on the left */
+.signup-section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: #153A5E;
+    clip-path: polygon(0 0, 30% 0, 15% 100%, 0% 100%);
+    z-index: 1;
 }
 
 .signup-container {
@@ -224,6 +238,8 @@ ul { list-style: none; }
     max-width: 550px;
     text-align: center;
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 2;
 }
 
 .signup-container h3 { font-size: 20px; margin-bottom: 24px; font-weight: 700; }
@@ -236,15 +252,12 @@ ul { list-style: none; }
     border-radius: 8px;
     font-size: 14px;
     outline: none;
-    transition: border 0.2s;
 }
-.signup-form input:focus { border-color: var(--primary); }
 
 .full-width { width: 100%; margin-top: 4px; }
 .login-text { font-size: 13px; color: var(--text-muted); }
-.login-text strong { color: var(--text-main); cursor: pointer; }
 
-/* --- FAQ SECTION --- */
+/* --- FAQ SECTION (True Accordion) --- */
 .faq { padding: 80px 20px; max-width: 800px; }
 .faq h2 { text-align: center; font-size: 32px; margin-bottom: 40px; font-weight: 700; }
 .faq-list { display: flex; flex-direction: column; gap: 12px; }
@@ -279,14 +292,31 @@ ul { list-style: none; }
     line-height: 1.6;
 }
 
-/* --- CTA SECTION --- */
+/* --- CTA SECTION (Slanted Background) --- */
 .cta {
     background: var(--dark);
     color: #ffffff;
     text-align: center;
-    padding: 80px 20px;
-    background-image: radial-gradient(circle at center, #153A5E 0%, var(--dark) 100%);
+    padding: 100px 20px;
+    position: relative;
+    overflow: hidden;
 }
+
+/* This creates the slanted shape on the right */
+.cta::after {
+    content: '';
+    position: absolute;
+    top: 0; right: 0; width: 100%; height: 100%;
+    background: #153A5E;
+    clip-path: polygon(100% 0, 100% 100%, 70% 100%, 85% 0);
+    z-index: 1;
+}
+
+.cta-content {
+    position: relative;
+    z-index: 2;
+}
+
 .cta h2 { font-size: 32px; margin-bottom: 24px; font-weight: 700; }
 
 /* --- FOOTER --- */
@@ -308,19 +338,19 @@ footer { padding: 80px 20px 30px; background: #ffffff; }
 }
 .footer-legal a { margin-left: 24px; }
 
-/* --- RESPONSIVE DESIGN (For Phones) --- */
+/* --- MOBILE RESPONSIVENESS --- */
 @media (max-width: 900px) {
-    .stats-card { flex-direction: column; gap: 24px; text-align: center; padding: 24px; }
-    .stats-grid { flex-wrap: wrap; justify-content: center; gap: 24px; }
-    .stat-item { border-left: none; padding-left: 0; }
-    
     .why-choose { flex-direction: column; gap: 40px; }
     .features-grid { grid-template-columns: 1fr; }
     
+    /* Pricing stacks on phone */
     .pricing-cards { flex-direction: column; gap: 30px; }
     .pro { transform: scale(1); }
     
     .signup-form { flex-direction: column; }
+    
+    /* Remove clip-paths on mobile so it doesn't look weird */
+    .signup-section::before, .cta::after { display: none; }
     
     .footer-top { flex-direction: column; gap: 40px; }
     .footer-links { flex-wrap: wrap; gap: 40px; }
